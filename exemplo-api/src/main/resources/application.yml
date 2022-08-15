@@ -1,0 +1,20 @@
+
+spring:
+  profiles:
+    active: local
+
+  flyway:
+    locations: classpath:db/migration
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/exemplo?currentSchema=exemplodb}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWD:password}

@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:12.11
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      APP_DB_NAME: exemplo
+      APP_SCHEMA_NAME: exemplodb
+    container_name: exemplo_sql
+    ports:
+      - '5433:5432'
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+      - /var/lib/postgresql-exemplo:/var/lib/postgresql/data
+
